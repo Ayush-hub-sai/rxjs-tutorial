@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="container-fluid">
+        <div class="row mb-3 mt-3">
+            <div class="col-md-3 text-end">
+                <input type="search" [formControl]="searchValue" class="form-control" placeholder="Search user...">
+            </div>
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                    <th>University</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (user of userList; track $index)
+                {
+                <tr>
+                    <td>{{ user.firstName+' ' +user.lastName }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ getObjectEntries(user.address) }}</td>
+                    <td>{{ user.phone }}</td>
+                    <td>{{ user.university }}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+        @if (userList.length==0) {
+        <div class="text-center mt-2 mb-2">
+            <h4>No Record Found....</h4>
+        </div>
+        }
+    </div>
+</div>
