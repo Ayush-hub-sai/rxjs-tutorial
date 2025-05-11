@@ -14,6 +14,7 @@ export class CrudOperationComponent implements OnInit {
   searchValue = new FormControl('');
   employeeList: any[] = [];
   storedEmployeeList: any[] = [];
+  imagePreviewList: any[] = [];
 
   isAddEmployee = false;
   isEditEmployee = false;
@@ -46,7 +47,7 @@ export class CrudOperationComponent implements OnInit {
       lastName: new FormControl('', Validators.required),
       email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', Validators.required),
-      image: new FormControl('', Validators.required)
+      image: new FormControl([], Validators.required)
     });
 
   }
@@ -63,19 +64,47 @@ export class CrudOperationComponent implements OnInit {
   }
 
   onFileSelected(event: Event) {
-    const file = (event.target as HTMLInputElement).files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.employeeForm.get('image')?.setValue(reader.result as string);
-      };
-      reader.readAsDataURL(file);
+    const files = (event.target as HTMLInputElement).files;
+    const base64Images: string[] = [];
+
+    if (files && files.length > 0) {
+      let loaded = 0;
+      for (let i = 0; i < files.length; i++) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          base64Images.push(reader.result as string);
+          loaded++;
+          if (loaded === files.length) {
+            this.employeeForm.get('image')?.setValue(base64Images);
+            this.imagePreviewList = base64Images;
+          }
+        };
+        reader.readAsDataURL(files[i]);
+      }
     } else {
-      this.employeeForm.get('image')?.setValue('');
+      this.employeeForm.get('image')?.setValue([]);
+      this.imagePreviewList = [];
     }
   }
 
+  removeImage(index: number, fileInput: HTMLInputElement) {
+    this.imagePreviewList.splice(index, 1)
+    // If no images are left, trigger validation
+    if (this.imagePreviewList.length === 0) {
+      this.employeeForm.get('image')?.markAsTouched();
+    }
+  }
+
+  clearImageValidator() {
+    if (this.imagePreviewList.length > 0) {
+      this.employeeForm.controls['image'].clearValidators();
+      this.employeeForm.updateValueAndValidity();
+    }
+  }
+  
   onSubmit() {
+    this.clearImageValidator();
+
     if (this.employeeForm.invalid) {
       this.employeeForm.markAllAsTouched();
       return;
@@ -86,6 +115,7 @@ export class CrudOperationComponent implements OnInit {
     if (this.isEditEmployee) {
       const index = this.storedEmployeeList.findIndex(e => e.email === formData.email);
       if (index !== -1) {
+        formData.image = this.imagePreviewList;
         this.storedEmployeeList[index] = formData;
       }
     } else {
@@ -117,6 +147,11 @@ export class CrudOperationComponent implements OnInit {
       phone: employee.phone,
       image: '' // Can't patch file input
     });
+
+    if (this.employeeList[index].image.length > 0) {
+      this.imagePreviewList = this.employeeList[index].image;
+      this.clearImageValidator();
+    }
 
     this.employeeForm.get('email')?.disable();
   }

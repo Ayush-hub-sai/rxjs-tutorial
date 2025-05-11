@@ -32,7 +32,7 @@
                                         <td>{{ employee.email }}</td>
                                         <td>{{ employee.phone }}</td>
                                         <td>
-                                            <img [src]="employee.image" alt="" srcset="" width="50px" height="50px"
+                                            <img [src]="employee.image[0]" alt="" srcset="" width="50px" height="50px"
                                                 class="rounded">
                                         </td>
                                         <td>
@@ -78,13 +78,37 @@
                                     <input type="text" class="form-control mb-2" placeholder="Phone"
                                         formControlName="phone">
                                 </div>
+
                                 <div class="row">
-                                    <input type="file" class="form-control mb-2" (change)="onFileSelected($event)">
-                                    <div *ngIf="employeeForm.get('image')?.invalid && employeeForm.get('image')?.touched"
+                                    <!-- File Input Section -->
+
+                                    <input type="file" class="form-control mb-2" (change)="onFileSelected($event)"
+                                        multiple #fileInput>
+
+                                    <!-- Validation Message -->
+                                    <div *ngIf="imagePreviewList.length==0"
                                         class="text-danger">
-                                        Image is required
+                                        At least one image is required
+                                    </div>
+
+
+                                    <!-- Image Preview Section -->
+                                    <div class="row mt-3 text-end" *ngIf="imagePreviewList.length">
+                                        <div class="col-auto position-relative me-2 mb-2"
+                                            *ngFor="let img of imagePreviewList; let i = index">
+                                            <img [src]="img" class="img-thumbnail" width="100" height="100"
+                                                alt="Preview" style="object-fit: cover;">
+
+                                            <!-- Remove Icon -->
+                                            <button type="button" (click)="removeImage(i, fileInput)"
+                                                class="btn btn-sm btn-danger position-absolute top-0 end-0 translate-middle p-1"
+                                                style="border-radius: 50%; z-index: 10;">
+                                                &minus;
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
+
                                 <div class="d-flex justify-content-between">
                                     <div>
                                         <button type="submit"
