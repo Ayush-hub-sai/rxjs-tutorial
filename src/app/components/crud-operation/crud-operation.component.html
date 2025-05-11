@@ -6,7 +6,7 @@
             </div>
 
             <div class="col-md-8 text-end">
-                <button type="button" class="btn btn-sm btn-success" (click)="openAddEmployeeForm()">Add
+                <button type="button" class="btn btn-sm btn-success" (click)="toggleAddEmployeeForm()">Add
                     Employee</button>
             </div>
         </div>
@@ -15,8 +15,8 @@
             <div [ngClass]="isAddEmployee ? 'col-md-8' : 'col-md-12'">
                 <div [ngClass]="isAddEmployee?'card':''">
                     <div [ngClass]="isAddEmployee?'container p-5':''">
-                        <table class="table table-bordered">
-                            <thead>
+                        <table class="table table-bordered table-striped  table-hover">
+                            <thead class="table-dark">
                                 <tr>
                                     <th>Name</th>
                                     <th>Email</th>
@@ -27,7 +27,7 @@
                             </thead>
                             <tbody>
                                 <ng-container *ngIf="employeeList.length > 0">
-                                    <tr *ngFor="let employee of employeeList; let i = index">
+                                    <tr *ngFor="let employee of employeeList; let i = index" >
                                         <td>{{ employee.firstName+' ' +employee.lastName }}</td>
                                         <td>{{ employee.email }}</td>
                                         <td>{{ employee.phone }}</td>
@@ -58,7 +58,7 @@
                 <div class="col-md-4 mb-5">
                     <div class="card">
                         <div class="container p-5">
-                            <form action="" [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+                            <form action="" [formGroup]="employeeForm" (ngSubmit)="submitForm()">
                                 <div class="row">
                                     <h4 class="text-center">{{!isEditEmployee? 'Add Employee':'Edit Employee'}}</h4>
                                 </div>
@@ -85,13 +85,6 @@
                                     <input type="file" class="form-control mb-2" (change)="onFileSelected($event)"
                                         multiple #fileInput>
 
-                                    <!-- Validation Message -->
-                                    <div *ngIf="imagePreviewList.length==0"
-                                        class="text-danger">
-                                        At least one image is required
-                                    </div>
-
-
                                     <!-- Image Preview Section -->
                                     <div class="row mt-3 text-end" *ngIf="imagePreviewList.length">
                                         <div class="col-auto position-relative me-2 mb-2"
@@ -100,7 +93,7 @@
                                                 alt="Preview" style="object-fit: cover;">
 
                                             <!-- Remove Icon -->
-                                            <button type="button" (click)="removeImage(i, fileInput)"
+                                            <button type="button" (click)="removeImage(i)"
                                                 class="btn btn-sm btn-danger position-absolute top-0 end-0 translate-middle p-1"
                                                 style="border-radius: 50%; z-index: 10;">
                                                 &minus;
@@ -116,7 +109,7 @@
                                     </div>
                                     <div>
                                         <button type="button" class="btn btn-md btn-danger"
-                                            (click)="cancel()">Cancel</button>
+                                            (click)="resetForm()">Cancel</button>
                                     </div>
                                 </div>
                             </form>
