@@ -5,6 +5,7 @@ import { CrudOperationComponent } from './components/crud-operation/crud-operati
 import { RendererTutorialComponent } from './components/renderer-tutorial/renderer-tutorial.component';
 import { ViesEncapsulationsComponent } from './components/vies-encapsulations/vies-encapsulations.component';
 import { PagenotfoundComponent } from './shared/sharedComponet/pagenotfound/pagenotfound.component';
+import { SignalsComponent } from './components/signals/signals.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'learn-dashboard', pathMatch: 'full' },
@@ -13,5 +14,6 @@ export const routes: Routes = [
     { path: 'crud-operation', component: CrudOperationComponent },
     { path: 'renderer', component: RendererTutorialComponent },
     { path: 'view-encapsulatons', component: ViesEncapsulationsComponent },
+    { path: 'signals', component: SignalsComponent },
     { path: '**', component: PagenotfoundComponent }
 ];
