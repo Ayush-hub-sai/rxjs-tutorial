@@ -6,25 +6,33 @@
         <h4>With Signal Value: {{withSignal()}}</h4>
 
         <div class="card p-3">
-            <button (click)="incrementWithoutSignal()" class="btn btn-sm btn-info mx-2"> Inc without Signal</button>
-            <button (click)="decrementWithSignal()" class="btn btn-sm btn-danger mx-2"> Dec without Signal</button>
+            <div>
+                <button (click)="incrementWithoutSignal()" class="btn btn-sm btn-info mx-2"> Inc without Signal</button>
+                <button (click)="decrementWithSignal()" class="btn btn-sm btn-danger "> Dec without Signal</button>
+            </div>
         </div>
 
         <div class="card p-3 mt-3">
-            <button (click)="incrementWithSignal()" class="btn btn-sm btn-success">Inc With Signal</button>
-            <button (click)="decrementWithSignal()" class="btn btn-sm btn-danger">Dec With Signal</button>
+            <div>
+                <button (click)="incrementWithSignal()" class="btn btn-sm btn-success mx-2">Inc With Signal</button>
+                <button (click)="decrementWithSignal()" class="btn btn-sm btn-danger">Dec With Signal</button>
+            </div>
         </div>
 
         <div class="card mt-3 p-3">
             <p><span>Writable Signal</span>{{' '+writableSignal() + ' '+ writableSignal2()}}</p>
             <p><span>Computed Signal</span>{{' ' +computedSignal()}}</p>
-            <button type="button" (click)="updateValue()" class="btn btn-md btn-secondary"> Update</button>
+            <div>
+                <button type="button" (click)="updateValue()" class="btn btn-md btn-secondary"> Update</button>
+            </div>
         </div>
 
         <div class="card mt-3 p-3">
             <p><span>Computed Signal</span>{{' ' +computedSignal2()}}</p>
-            <button type="button" (click)="udateComputedValue()" class="btn btn-md btn-primary"> Update computed
-                value</button>
+            <div>
+                <button type="button" (click)="udateComputedValue()" class="btn btn-md btn-primary"> Update computed
+                    value</button>
+            </div>
         </div>
 
     </div>
