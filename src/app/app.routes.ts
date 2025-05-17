@@ -6,6 +6,7 @@ import { RendererTutorialComponent } from './components/renderer-tutorial/render
 import { ViesEncapsulationsComponent } from './components/vies-encapsulations/vies-encapsulations.component';
 import { PagenotfoundComponent } from './shared/sharedComponet/pagenotfound/pagenotfound.component';
 import { SignalsComponent } from './components/signals/signals.component';
+import { PaymentComponent } from './components/payment/payment.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'learn-dashboard', pathMatch: 'full' },
@@ -15,5 +16,6 @@ export const routes: Routes = [
     { path: 'renderer', component: RendererTutorialComponent },
     { path: 'view-encapsulatons', component: ViesEncapsulationsComponent },
     { path: 'signals', component: SignalsComponent },
+    { path: 'payment', component: PaymentComponent },
     { path: '**', component: PagenotfoundComponent }
 ];

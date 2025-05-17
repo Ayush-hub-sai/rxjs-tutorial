@@ -1,0 +1,49 @@
+<form [formGroup]="cardForm" (ngSubmit)="onSubmit()" class="card-form">
+    <h2>Payment Details</h2>
+
+    <!-- Card Holder Name -->
+    <div class="form-group">
+        <label for="cardHolder">Name on Card</label>
+        <input id="cardHolder" type="text" formControlName="cardHolderName" placeholder="John Doe" />
+        <small *ngIf="cardForm.get('cardHolderName')?.touched && cardForm.get('cardHolderName')?.invalid">
+            Name is required (min 3 characters).
+        </small>
+    </div>
+
+    <!-- Card Number Field with Dynamic Logo -->
+    <div class="form-group card-number-group">
+        <label for="cardNumber">Card Number</label>
+        <div class="input-wrapper">
+            <input id="cardNumber" type="text" formControlName="cardNumber" placeholder="1234 5678 9012 3456"
+                maxlength="19" />
+            <img *ngIf="cardType !== 'Unknown'" [src]="'assets/images/' + cardType + '.png'"
+                class="card-logo" />
+        </div>
+    </div>
+
+    <!-- Expiry Date -->
+    <div class="form-group">
+        <label for="expiryDate">Expiry Date</label>
+        <input id="expiryDate" type="text" formControlName="expiryDate" placeholder="MM/YY" />
+        <small *ngIf="cardForm.get('expiryDate')?.touched && cardForm.get('expiryDate')?.errors?.['invalidDate']">
+            Invalid format. Use MM/YY.
+        </small>
+        <small *ngIf="cardForm.get('expiryDate')?.touched && cardForm.get('expiryDate')?.errors?.['expired']">
+            Card has expired.
+        </small>
+    </div>
+
+    <!-- CVV -->
+    <div class="form-group">
+        <label for="cvv">CVV</label>
+        <input id="cvv" type="password" formControlName="cvv" maxlength="4" placeholder="123" />
+        <small *ngIf="cardForm.get('cvv')?.touched && cardForm.get('cvv')?.invalid">
+            Invalid CVV (3–4 digits).
+        </small>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="cardForm.invalid">
+        Pay Now
+    </button>
+</form>
