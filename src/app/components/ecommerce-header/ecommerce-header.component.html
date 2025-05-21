@@ -1,0 +1,23 @@
+<nav class="header">
+    <ul class="category-list">
+        <li *ngFor="let cat of categories" (mouseenter)="showPopup(cat.id)" (mouseleave)="hidePopup()"
+            class="category-item">
+            {{ cat.name }}
+
+            <div class="mega-menu" *ngIf="hoveredCategoryId === cat.id" (mouseenter)="showPopup(cat.id)"
+                (mouseleave)="hidePopup()">
+
+                <div class="subcategories">
+                    <div *ngFor="let sub of cat.subcategories" class="subcategory-item"
+                        (mouseenter)="onSubcategoryHover(sub)" (click)="navigateToSubcategory(sub)">
+                        {{ sub.name }}
+                    </div>
+                </div>
+
+                <div class="subcategory-image" *ngIf="hoveredSubcategoryImage">
+                    <img [src]="hoveredSubcategoryImage" alt="Subcategory image">
+                </div>
+            </div>
+        </li>
+    </ul>
+</nav>

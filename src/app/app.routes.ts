@@ -7,6 +7,8 @@ import { ViesEncapsulationsComponent } from './components/vies-encapsulations/vi
 import { PagenotfoundComponent } from './shared/sharedComponet/pagenotfound/pagenotfound.component';
 import { SignalsComponent } from './components/signals/signals.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { EcommerceHeaderComponent } from './components/ecommerce-header/ecommerce-header.component';
+import { ItemsComponent } from './components/ecommerce-header/items/items.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'learn-dashboard', pathMatch: 'full' },
@@ -17,5 +19,7 @@ export const routes: Routes = [
     { path: 'view-encapsulatons', component: ViesEncapsulationsComponent },
     { path: 'signals', component: SignalsComponent },
     { path: 'payment', component: PaymentComponent },
+    { path: 'e-commerce', component: EcommerceHeaderComponent },
+    { path: 'subcategory/:subcategoryId', component: ItemsComponent },
     { path: '**', component: PagenotfoundComponent }
 ];
