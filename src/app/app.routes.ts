@@ -8,6 +8,8 @@ import { PagenotfoundComponent } from './shared/sharedComponet/pagenotfound/page
 import { SignalsComponent } from './components/signals/signals.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { LogicBasedComponent } from './components/logic-based/logic-based.component';
+import { EcommerceHeaderComponent } from './components/ecommerce-header/ecommerce-header.component';
+import { ItemsComponent } from './components/ecommerce-header/items/items.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'learn-dashboard', pathMatch: 'full' },
@@ -19,5 +21,7 @@ export const routes: Routes = [
     { path: 'signals', component: SignalsComponent },
     { path: 'payment', component: PaymentComponent },
     { path: 'logic', component: LogicBasedComponent },
+    { path: 'e-commerce', component: EcommerceHeaderComponent },
+    { path: 'subcategory/:subcategoryId', component: ItemsComponent },
     { path: '**', component: PagenotfoundComponent }
 ];
