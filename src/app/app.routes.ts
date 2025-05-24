@@ -7,6 +7,7 @@ import { ViesEncapsulationsComponent } from './components/vies-encapsulations/vi
 import { PagenotfoundComponent } from './shared/sharedComponet/pagenotfound/pagenotfound.component';
 import { SignalsComponent } from './components/signals/signals.component';
 import { PaymentComponent } from './components/payment/payment.component';
+import { LogicBasedComponent } from './components/logic-based/logic-based.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'learn-dashboard', pathMatch: 'full' },
@@ -17,5 +18,6 @@ export const routes: Routes = [
     { path: 'view-encapsulatons', component: ViesEncapsulationsComponent },
     { path: 'signals', component: SignalsComponent },
     { path: 'payment', component: PaymentComponent },
+    { path: 'logic', component: LogicBasedComponent },
     { path: '**', component: PagenotfoundComponent }
 ];
