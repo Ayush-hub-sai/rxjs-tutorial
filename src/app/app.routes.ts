@@ -9,6 +9,8 @@ import { SignalsComponent } from './components/signals/signals.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { EcommerceHeaderComponent } from './components/ecommerce-header/ecommerce-header.component';
 import { ItemsComponent } from './components/ecommerce-header/items/items.component';
+import { ViewChildNgContentComponent } from './components/view-child-ng-content/view-child-ng-content.component';
+import { HostlistenerHostbindingComponent } from './components/hostlistener-hostbinding/hostlistener-hostbinding.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'learn-dashboard', pathMatch: 'full' },
@@ -21,5 +23,7 @@ export const routes: Routes = [
     { path: 'payment', component: PaymentComponent },
     { path: 'e-commerce', component: EcommerceHeaderComponent },
     { path: 'subcategory/:subcategoryId', component: ItemsComponent },
+    { path: 'view-Child-ng-content', component: ViewChildNgContentComponent },
+    { path: 'hostListener-hostBinding', component: HostlistenerHostbindingComponent },
     { path: '**', component: PagenotfoundComponent }
 ];
