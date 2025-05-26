@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="card">
+        <div>
+            <h3>Duplicate Element of String</h3>
+            <div class="row m-3">
+                <div class="col-md-4 p-0">
+                    <input type="text" [(ngModel)]="inputValue" placeholder="Enter a value" class="form-control" />
+                </div>
+
+                <div class="col-md-8">
+                    <h3 *ngIf="uniqueEle !=''">The Unique element is {{uniqueEle}}</h3>
+                    <h3 *ngIf="duplicateEle!=''">The Duplicate element is
+                        {{duplicateEle}}</h3>
+
+                    <h3 *ngIf="removeDuplicateString!=''">The Remove Duplicate element is
+                        {{removeDuplicateString}}</h3>
+                </div>
+
+            </div>
+
+            <button (click)="duplicateElementString()" class="btn btn-success m-3">Unique & Duplicate</button>
+            <button (click)="removeDuplicate()" class="btn btn-primary m-3">Remove Duplicate</button>
+
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <h3>Duplicate Element of an Array</h3>
+        <div class="row m-3">
+            <div class="col-md-4 p-0">
+                <h5>[1,2,4,5,13,54,4,2,6,5,53,23,45,53,53]</h5>
+            </div>
+        </div>
+
+        <div>
+            <button (click)="duplicateElementArray()" class="btn btn-success m-3">Unique & Duplicate</button>
+            <!-- <button (click)="removeDuplicate()" class="btn btn-primary m-3">Remove Duplicate</button> -->
+        </div>
+    </div>
+
+    <div class="card">
+        <h3>Filter Method</h3>
+        
+    </div>
+</div>
