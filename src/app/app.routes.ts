@@ -10,6 +10,8 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { LogicBasedComponent } from './components/logic-based/logic-based.component';
 import { EcommerceHeaderComponent } from './components/ecommerce-header/ecommerce-header.component';
 import { ItemsComponent } from './components/ecommerce-header/items/items.component';
+import { ViewChildNgContentComponent } from './components/view-child-ng-content/view-child-ng-content.component';
+import { HostlistenerHostbindingComponent } from './components/hostlistener-hostbinding/hostlistener-hostbinding.component';
 import { HtmlIssuesComponent } from './components/html-issues/html-issues.component';
 
 export const routes: Routes = [
@@ -24,6 +26,8 @@ export const routes: Routes = [
     { path: 'logic', component: LogicBasedComponent },
     { path: 'e-commerce', component: EcommerceHeaderComponent },
     { path: 'subcategory/:subcategoryId', component: ItemsComponent },
+    { path: 'view-Child-ng-content', component: ViewChildNgContentComponent },
+    { path: 'hostListener-hostBinding', component: HostlistenerHostbindingComponent },
     { path: 'html-design', component: HtmlIssuesComponent },
     { path: '**', component: PagenotfoundComponent }
 ];
