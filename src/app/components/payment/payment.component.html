@@ -1,3 +1,15 @@
+<div class="container text-center">
+    <div class="d-flex justify-content-center m-3">
+        <button type="submit" (click)="proceedPayment()" class="btn btn-primary btn-sm w-25">
+            Proceed Payment
+        </button>
+    </div>
+    <iframe *ngIf="trustedRedirectData" [attr.srcdoc]="trustedRedirectData" width="80%" height="650"
+        style="border: 2px solid rebeccapurple;" frameborder="0" allowfullscreen allowpaymentrequest
+        sandbox="allow-forms allow-scripts allow-popups allow-modals allow-top-navigation-by-user-activation allow-downloads">
+    </iframe>
+</div>
+
 <form [formGroup]="cardForm" (ngSubmit)="onSubmit()" class="card-form">
     <h2>Payment Details</h2>
 
@@ -16,8 +28,7 @@
         <div class="input-wrapper">
             <input id="cardNumber" type="text" formControlName="cardNumber" placeholder="1234 5678 9012 3456"
                 maxlength="19" />
-            <img *ngIf="cardType !== 'Unknown'" [src]="'assets/images/' + cardType + '.png'"
-                class="card-logo" />
+            <img *ngIf="cardType !== 'Unknown'" [src]="'assets/images/' + cardType + '.png'" class="card-logo" />
         </div>
     </div>
 
