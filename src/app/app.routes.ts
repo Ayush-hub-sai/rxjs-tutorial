@@ -13,6 +13,10 @@ import { ItemsComponent } from './components/ecommerce-header/items/items.compon
 import { ViewChildNgContentComponent } from './components/view-child-ng-content/view-child-ng-content.component';
 import { HostlistenerHostbindingComponent } from './components/hostlistener-hostbinding/hostlistener-hostbinding.component';
 import { HtmlIssuesComponent } from './components/html-issues/html-issues.component';
+import { FetchcaptchaComponent } from './components/fetchcaptcha/fetchcaptcha.component';
+import { GeolocationComponent } from './components/geolocation/geolocation.component';
+import { SsrComponent } from './components/ssr/ssr.component';
+import { ChatbotComponent } from './components/chatbot/chatbot.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'learn-dashboard', pathMatch: 'full' },
@@ -29,5 +33,9 @@ export const routes: Routes = [
     { path: 'view-Child-ng-content', component: ViewChildNgContentComponent },
     { path: 'hostListener-hostBinding', component: HostlistenerHostbindingComponent },
     { path: 'html-design', component: HtmlIssuesComponent },
+    { path: 'captcha', component: FetchcaptchaComponent },
+    { path: 'locations', component: GeolocationComponent },
+    { path: 'ssr', component: SsrComponent },
+    { path: 'chatbot', component: ChatbotComponent },
     { path: '**', component: PagenotfoundComponent }
 ];

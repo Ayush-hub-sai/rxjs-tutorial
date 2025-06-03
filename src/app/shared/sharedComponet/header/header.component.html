@@ -7,33 +7,11 @@
 
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
+          @for (route of routerList; track route.label) {
             <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/rxjs-operator">Rxjs</a>
+              <a class="nav-link" [routerLink]="route.route">{{ route.label }}</a>
             </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/crud-operation">Crud Operation(Local St)</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/renderer">Renderer</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/view-encapsulatons">View Encapsulations</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/signals">Signals</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/payment">Payment</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/logic">Logic</a>
-            </li>    
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="/e-commerce">Shopping</a>
-            </li>
-            <li class="nav-item" routerLinkActive="active">
-                <a class="nav-link" routerLink="html-design">Html Design</a>
-            </li>
+          }
         </ul>
-    </div>
+      </div>
 </nav>
