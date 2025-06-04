@@ -10,6 +10,13 @@
     </iframe>
 </div>
 
+<div class="container text-center my-5">
+    <button (click)="payWithRazorpay()" class="btn btn-success btn-sm w-25">
+        Pay ₹100
+    </button>
+</div>
+
+
 <form [formGroup]="cardForm" (ngSubmit)="onSubmit()" class="card-form">
     <h2>Payment Details</h2>
 
