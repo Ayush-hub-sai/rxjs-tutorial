@@ -13,6 +13,7 @@ import { ItemsComponent } from './components/ecommerce-header/items/items.compon
 import { ViewChildNgContentComponent } from './components/view-child-ng-content/view-child-ng-content.component';
 import { HostlistenerHostbindingComponent } from './components/hostlistener-hostbinding/hostlistener-hostbinding.component';
 import { HtmlIssuesComponent } from './components/html-issues/html-issues.component';
+import { IonicComponent } from './components/ionic/ionic.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'learn-dashboard', pathMatch: 'full' },
@@ -29,5 +30,6 @@ export const routes: Routes = [
     { path: 'view-Child-ng-content', component: ViewChildNgContentComponent },
     { path: 'hostListener-hostBinding', component: HostlistenerHostbindingComponent },
     { path: 'html-design', component: HtmlIssuesComponent },
+    { path: 'ionic', component: IonicComponent },
     { path: '**', component: PagenotfoundComponent }
 ];
