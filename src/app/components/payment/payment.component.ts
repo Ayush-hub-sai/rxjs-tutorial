@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
@@ -16,7 +17,9 @@ export class PaymentComponent {
 
   constructor(
     private fb: FormBuilder,
-    private sanitizer: DomSanitizer) { }
+    private sanitizer: DomSanitizer,
+    private http: HttpClient
+  ) { }
 
   ngOnInit(): void {
     this.cardForm = this.fb.group({
@@ -203,6 +206,46 @@ export class PaymentComponent {
     this.loadIframe();
   }
 
+
+  payWithRazorpay() {
+    const amountInRupees = 100;
+    const amount = amountInRupees * 100; // Razorpay needs amount in paise
+  
+    this.http.post<any>('http://localhost:3000/create-order', { amount: amountInRupees }).subscribe({
+      next: (order) => {
+        console.log('Order from server:', order);
+  
+        const options: any = {
+          key: 'rzp_test_yF0cXBRQ71NDv2', // 🔒 Public key only
+          amount: order.amount,           // ✅ amount in paise from backend
+          currency: order.currency || 'INR',
+          name: 'My Shop',
+          description: 'Test Transaction',
+          order_id: order.id,             // ✅ Must be present
+          handler: (response: any) => {
+            console.log('Payment success', response);
+            alert('Payment ID: ' + response.razorpay_payment_id);
+          },
+          prefill: {
+            name: 'Customer Name',
+            email: 'customer@example.com',
+            contact: '9999999999'
+          },
+          theme: {
+            color: '#0a5'
+          }
+        };
+  
+        const rzp = new (window as any).Razorpay(options);
+        rzp.open();
+      },
+      error: (err) => {
+        console.error('Order creation failed:', err);
+        alert('Failed to create Razorpay order.');
+      }
+    });
+  }
+  
 
 }
 
