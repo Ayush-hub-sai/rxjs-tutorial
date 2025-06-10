@@ -27,6 +27,7 @@ export class HeaderComponent {
     {label:'Geo-Locations',route:'locations'},
     {label:'SSR',route:'ssr'},
     {label:'Chatbot',route:'chatbot'},
+    {label:'Notification',route:'notification'},
     {label:'Logic',route:'logic'},
     {label:'Html Design',route:'html-design'},
   ]

@@ -1,3 +1,13 @@
-<app-header></app-header>
-<router-outlet />
-<app-footer></app-footer>
+<app-header class="sticky-header"></app-header>
+
+<div class="content-container">
+  <router-outlet></router-outlet>
+</div>
+
+<app-footer class="sticky-footer"></app-footer>
+
+<!-- Floating Notification Bell -->
+<div class="notification-bell" (click)="onBellClick()">
+  🔔
+  <span *ngIf="notificationCount > 0" class="count-badge">{{ notificationCount }}</span>
+</div>
