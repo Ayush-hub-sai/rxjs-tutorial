@@ -1,3 +1,17 @@
-<app-header></app-header>
-<router-outlet />
-<app-footer></app-footer>
+<mat-sidenav-container class="main-container">
+  <!-- Sidebar -->
+  <mat-sidenav #sidenav [mode]="isScreenSmall() ? 'over' : 'side'" [opened]="!isScreenSmall()" class="app-sidebar">
+    <app-sidebar></app-sidebar>
+  </mat-sidenav>
+
+  <!-- Main Content -->
+  <mat-sidenav-content>
+    <app-header [showToggle]="isScreenSmall()" (toggleSidenav)="sidenav.toggle()"></app-header>
+
+    <main class="content-area">
+      <router-outlet></router-outlet>
+    </main>
+
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>

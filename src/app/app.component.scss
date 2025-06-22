@@ -1,0 +1,13 @@
+.main-container {
+  height: 100vh;
+}
+
+.app-sidebar {
+  width: 240px;
+  background-color: #f8f9fa;
+}
+
+.content-area {
+  padding: 1rem;
+  min-height: calc(100vh - 128px); /* Adjust as needed */
+}

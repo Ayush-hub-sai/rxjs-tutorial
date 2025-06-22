@@ -1,17 +1,6 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" routerLink="/learn-dashboard" routerLinkActive="active">Dashboard</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav">
-          @for (route of routerList; track route.label) {
-            <li class="nav-item" routerLinkActive="active">
-              <a class="nav-link" [routerLink]="route.route">{{ route.label }}</a>
-            </li>
-          }
-        </ul>
-      </div>
-</nav>
+<mat-toolbar color="primary">
+  <button *ngIf="showToggle" mat-icon-button (click)="toggleSidenav.emit()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>My App</span>
+</mat-toolbar>
