@@ -16,7 +16,8 @@ import { BreakpointObserver,Breakpoints  } from '@angular/cdk/layout';
     MatSidenavModule, MatListModule, MatIconModule,
   ],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  standalone: true,
 })
 export class AppComponent {
  // Signal to track if screen is small

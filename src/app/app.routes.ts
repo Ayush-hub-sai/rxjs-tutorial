@@ -17,6 +17,7 @@ import { FetchcaptchaComponent } from './components/fetchcaptcha/fetchcaptcha.co
 import { GeolocationComponent } from './components/geolocation/geolocation.component';
 import { SsrComponent } from './components/ssr/ssr.component';
 import { ChatbotComponent } from './components/chatbot/chatbot.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'learn-dashboard', pathMatch: 'full' },
@@ -37,5 +38,6 @@ export const routes: Routes = [
     { path: 'locations', component: GeolocationComponent },
     { path: 'ssr', component: SsrComponent },
     { path: 'chatbot', component: ChatbotComponent },
+    { path: 'notification', component: NotificationComponent },
     { path: '**', component: PagenotfoundComponent }
 ];
