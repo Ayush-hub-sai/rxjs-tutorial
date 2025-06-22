@@ -16,7 +16,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class SidebarComponent {
   routerList: any[] = [
-    // {label:'Dashboard',route:'learn-dashboard'},
     { label: 'Rxjs', route: 'rxjs-operator' },
     { label: 'Crud', route: 'crud-operation' },
     { label: 'Renderer', route: 'renderer' },
@@ -26,6 +25,7 @@ export class SidebarComponent {
     { label: 'E-Commerce', route: 'e-commerce' },
     { label: 'View Child/Ng Content', route: 'view-Child-ng-content' },
     { label: 'Host Listener/Binding', route: 'hostListener-hostBinding' },
+    { label: 'Defer-View', route: 'defer-view' },
     { label: 'Captcha', route: 'captcha' },
     { label: 'Geo-Locations', route: 'locations' },
     { label: 'SSR', route: 'ssr' },

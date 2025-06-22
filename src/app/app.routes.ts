@@ -18,6 +18,7 @@ import { GeolocationComponent } from './components/geolocation/geolocation.compo
 import { SsrComponent } from './components/ssr/ssr.component';
 import { ChatbotComponent } from './components/chatbot/chatbot.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { DeferViewComponent } from './components/defer-view/defer-view.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'learn-dashboard', pathMatch: 'full' },
@@ -30,6 +31,7 @@ export const routes: Routes = [
     { path: 'payment', component: PaymentComponent },
     { path: 'logic', component: LogicBasedComponent },
     { path: 'e-commerce', component: EcommerceHeaderComponent },
+    { path: 'defer-view', component: DeferViewComponent },
     { path: 'subcategory/:subcategoryId', component: ItemsComponent },
     { path: 'view-Child-ng-content', component: ViewChildNgContentComponent },
     { path: 'hostListener-hostBinding', component: HostlistenerHostbindingComponent },

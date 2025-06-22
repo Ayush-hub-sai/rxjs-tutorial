@@ -25,30 +25,24 @@
     overflow: hidden;
 }
 
-/* Fixed Home Link */
-.fixed-home {
-    position: sticky;
-    top: 0;
-    background-color: white;
-    /* Adjust if your sidebar uses a different color */
-    z-index: 1;
-}
-
-.scrollable-routes {
-    overflow-y: auto;
-    flex-grow: 1;
-
-    /* Hide scrollbar but keep scrolling */
-    scrollbar-width: none;            /* Firefox */
-    -ms-overflow-style: none;         /* IE 10+ */
-}
 .scrollable-routes::-webkit-scrollbar {
-    display: none;                    /* Chrome, Safari, Edge */
+    display: none;
+    /* Chrome, Safari, Edge */
 }
 
 /* Modern styling */
 .scrollable-routes {
-    border-right: 1px solid #ddd;     /* Light right border */
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05); /* Subtle right shadow */
-    background-color: #fff;           /* White background for clean look */
+    overflow-y: auto;
+    flex-grow: 1;
+    /* Hide scrollbar but keep scrolling */
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
+    border-right: 1px solid #ddd;
+    /* Light right border */
+    box-shadow: 3px 2px 6px 0px rgb(181 173 173 / 84%);
+    background-color: #ffffff;
+    margin-right: 5px;
+    border-radius: 0 10px 10px 0;
 }
