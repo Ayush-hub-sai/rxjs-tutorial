@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './logic-based.component.scss'
 })
 export class LogicBasedComponent {
+
   inputValue: string = '';
   uniqueEle: string = '';
   duplicateEle: string = '';
@@ -107,6 +108,22 @@ export class LogicBasedComponent {
 
     console.log(duplicateEleArr);
 
+  }
+
+
+  inputValueScenario: string = '';
+  taskValue: string[] = [];
+  manupulateValue(arg0: string) {
+    if (arg0 == 'push' && this.inputValueScenario.trim() !== '' && !this.taskValue.includes(this.inputValueScenario)) {
+      this.taskValue.push(this.inputValueScenario);
+    } else if (arg0 == 'pop') {
+      this.taskValue.pop();
+    } else if (arg0 == 'shift') {
+      this.taskValue.shift();
+    } else if (arg0 == 'Unshift' && this.inputValueScenario.trim() !== '') {
+      this.taskValue.unshift(this.inputValueScenario);
+    }
+    this.inputValueScenario = '';
   }
 
 }
