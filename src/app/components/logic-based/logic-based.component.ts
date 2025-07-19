@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -126,4 +126,94 @@ export class LogicBasedComponent {
     this.inputValueScenario = '';
   }
 
+  inputNumber: string = '';
+  operatorNum: string = '';
+
+  appendNum(num: number) {
+    if (this.operatorNum !== '') {
+      const ops = {
+        'add': '+',
+        'sub': '-',
+        'cross': '*',
+        'div': '/',
+        'mod': '%'
+      };
+      const symbol = ops[this.operatorNum as keyof typeof ops];
+
+      const parts = this.inputNumber.split(symbol);
+      const lastValue = parts[parts.length - 2];
+
+      if (!isNaN(Number(lastValue))) {
+        switch (this.operatorNum) {
+          case 'add':
+            this.inputNumber = (Number(lastValue) + num).toString();
+            break;
+          case 'sub':
+            this.inputNumber = (Number(lastValue) - num).toString();
+            break;
+          case 'cross':
+            this.inputNumber = (Number(lastValue) * num).toString();
+            break;
+          case 'div':
+            this.inputNumber = (Number(lastValue) / num).toString();
+            break;
+          case 'mod':
+            this.inputNumber = (Number(lastValue) % num).toString();
+            break;
+        }
+      }
+      this.operatorNum = '';
+    } else {
+      this.inputNumber += num;
+    }
+  }
+
+  operation(operator: string) {
+    if (operator === 'clear') {
+      this.inputNumber = '';
+    } else {
+      const ops = {
+        'add': '+',
+        'sub': '-',
+        'cross': '*',
+        'div': '/',
+        'mod': '%'
+      };
+      this.inputNumber += ops[operator as keyof typeof ops];
+      this.operatorNum = operator;
+    }
+  }
+
+  calculateResult() {
+    try {
+      this.inputNumber = eval(this.inputNumber).toString();
+    } catch (err) {
+      this.inputNumber = 'Error';
+    }
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    const key = event.key;
+
+    if (!isNaN(Number(key))) {
+      this.appendNum(Number(key));
+    } else if (key === '+') {
+      this.operation('add');
+    } else if (key === '-') {
+      this.operation('sub');
+    } else if (key === '*') {
+      this.operation('cross');
+    } else if (key === '/') {
+      this.operation('div');
+    } else if (key === '%') {
+      this.operation('mod');
+    } else if (key === 'Enter') {
+      this.calculateResult();
+    } else if (key.toLowerCase() === 'c') {
+      this.operation('clear');
+    } else if (key === 'Backspace') {
+      this.inputNumber = this.inputNumber.slice(0, -1);
+    }
+  }
 }
