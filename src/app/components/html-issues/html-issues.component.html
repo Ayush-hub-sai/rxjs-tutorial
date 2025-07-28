@@ -1,3 +1,21 @@
+<div class="card m-3">
+    <div class="product-grid m-3">
+        <div class="product-card" *ngFor="let item of items">
+            <img [src]="item.imageUrl" [alt]="item.name" class="product-img"
+                (error)="item.imageUrl = 'https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg'" />
+            <span class="fw-500">{{ item.name }}</span>
+            <p>₹{{ item.discountPrice || item.price }}</p>
+            <span *ngIf="!item.isAvailable" class="out-of-stock">Out of Stock</span>
+            <div *ngIf="item.variants?.length">
+                <div *ngFor="let variant of item.variants">
+                    {{ variant.type }}: {{ variant.value }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
 <div class="card m-3 text-center">
 
     <h4>Vertical Scroll</h4>

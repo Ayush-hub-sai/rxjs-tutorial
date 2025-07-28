@@ -8,10 +8,10 @@ import { Component, ContentChild, ElementRef, AfterContentInit, ViewChild } from
 })
 export class ChildComponent implements AfterContentInit {
 
-  // @ContentChild('projectedTitle') title!: ElementRef;
+  @ContentChild('projectedTitle') title!: ElementRef;
 
   ngAfterContentInit() {
-    // console.log('Projected title:', this.title.nativeElement.textContent);
+    console.log('Projected title:', this.title.nativeElement.textContent);
   }
 
   @ViewChild('myInput') inputValue!:ElementRef;
