@@ -1,19 +1,19 @@
 <div class="container">
     <div class="card">
         <div>
-            <h3>Duplicate Element of String</h3>
+            <h4 class="m-3">Duplicate Element of String</h4>
             <div class="row m-3">
                 <div class="col-md-4 p-0">
                     <input type="text" [(ngModel)]="inputValue" placeholder="Enter a value" class="form-control" />
                 </div>
 
                 <div class="col-md-8">
-                    <h3 *ngIf="uniqueEle !=''">The Unique element is {{uniqueEle}}</h3>
-                    <h3 *ngIf="duplicateEle!=''">The Duplicate element is
-                        {{duplicateEle}}</h3>
+                    <h4 *ngIf="uniqueEle !=''">The Unique element is {{uniqueEle}}</h4>
+                    <h4 *ngIf="duplicateEle!=''">The Duplicate element is
+                        {{duplicateEle}}</h4>
 
-                    <h3 *ngIf="removeDuplicateString!=''">The Remove Duplicate element is
-                        {{removeDuplicateString}}</h3>
+                    <h4 *ngIf="removeDuplicateString!=''">The Remove Duplicate element is
+                        {{removeDuplicateString}}</h4>
                 </div>
 
             </div>
@@ -24,8 +24,8 @@
         </div>
     </div>
 
-    <div class="card mt-3">
-        <h3>Duplicate Element of an Array</h3>
+    <div class="card mt-3 mb-3">
+        <h4 class="m-3">Duplicate Element of an Array</h4>
         <div class="row m-3">
             <div class="col-md-4 p-0">
                 <h5>[1,2,4,5,13,54,4,2,6,5,53,23,45,53,53]</h5>
@@ -38,9 +38,87 @@
         </div>
     </div>
 
+    <div class="card mb-3">
+        <h4 class="m-3">Filter Method</h4>
+    </div>
+</div>
+
+<div class="container mb-3">
     <div class="card">
-        <h3>Filter Method</h3>
-        
+        <div>
+            <h4 class="m-3">Scenario Based Interview</h4>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <input type="text" [(ngModel)]="inputValueScenario" placeholder="Enter a value"
+                    class="form-control m-3" />
+            </div>
+            <div class="col-md-8">
+                <button type="button" class="btn btn-sm btn-primary m-2 mt-4"
+                    (click)="manupulateValue('push')">Push</button>
+                <button type="button" class="btn btn-sm btn-secondary m-2 mt-4"
+                    (click)="manupulateValue('pop')">Pop</button>
+                <button type="button" class="btn btn-sm btn-info m-2 mt-4"
+                    (click)="manupulateValue('shift')">Shift</button>
+                <button type="button" class="btn btn-sm btn-success  m-2 mt-4"
+                    (click)="manupulateValue('Unshift')">Unshift</button>
+            </div>
+            <div>
+                <ng-container *ngIf="taskValue.length > 0">
+                    <h4 class="m-3">Task List</h4>
+                    <ul *ngFor="let task of taskValue">
+                        <li>{{task | titlecase}}</li>
+                    </ul>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mb-3">
+    <div class="card">
+        <div class="text-center">
+            <h4 class="m-3">Calculator</h4>
+        </div>
+
+        <div class="d-flex justify-content-center align-items-center mb-3">
+            <div class="calculator">
+                <div>
+                    <input type="text" [(ngModel)]="inputNumber" class="form-control mb-2" />
+                </div>
+
+                <div>
+                    <button class="btn btn-sm btn-secondary m-2" (click)="appendNum(1)">1</button>
+                    <button class="btn btn-sm btn-secondary m-2" (click)="appendNum(2)">2</button>
+                    <button class="btn btn-sm btn-secondary m-2" (click)="appendNum(3)">3</button>
+                    <button class="btn btn-sm btn-danger m-2" (click)="operation('clear')">AC</button>
+                </div>
+
+                <div>
+                    <button class="btn btn-sm btn-secondary m-2" (click)="appendNum(4)">4</button>
+                    <button class="btn btn-sm btn-secondary m-2" (click)="appendNum(5)">5</button>
+                    <button class="btn btn-sm btn-secondary m-2" (click)="appendNum(6)">6</button>
+                    <button class="btn btn-sm btn-success m-2" (click)="calculateResult()">=</button>
+                </div>
+
+                <div>
+                    <button class="btn btn-sm btn-secondary m-2" (click)="appendNum(7)">7</button>
+                    <button class="btn btn-sm btn-secondary m-2" (click)="appendNum(8)">8</button>
+                    <button class="btn btn-sm btn-secondary m-2" (click)="appendNum(9)">9</button>
+                    <button class="btn btn-sm btn-success m-2" (click)="operation('add')">+</button>
+                </div>
+
+                <div>
+                    <button class="btn btn-sm btn-secondary m-2" (click)="appendNum(0)">0</button>
+                    <button class="btn btn-sm btn-success m-2" (click)="operation('sub')">-</button>
+                    <button class="btn btn-sm btn-success m-2" (click)="operation('cross')">*</button>
+                    <button class="btn btn-sm btn-success m-2" (click)="operation('div')">/</button>
+                    <button class="btn btn-sm btn-success m-2" (click)="operation('mod')">%</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div class="card mt-3">
