@@ -8,7 +8,7 @@
 
         <table class="table table-bordered table-hover table-responsive">
             <thead class="table-dark">
-                <tr >
+                <tr>
                     <th>Name</th>
                     <th>Email</th>
                     <th>Address</th>
@@ -29,6 +29,13 @@
                 }
             </tbody>
         </table>
+
+        <!-- <div class="col-md-12 text-end p-5">
+            <button (click)="prev()" [disabled]="currentPage === 1" type="button"
+                class="btn btn-sm btn-success">Prev</button>
+            <button (click)="next()" [disabled]="currentPage === totalPages" type="button"
+                class="btn btn-sm btn-success">Next</button>
+        </div> -->
 
         @if (userList.length==0) {
         <div class="text-center mt-2 mb-2">

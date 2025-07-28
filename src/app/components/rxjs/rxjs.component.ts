@@ -15,11 +15,13 @@ export class RxjsComponent implements OnInit {
   userList: any[] = [];
   searchValue: FormControl = new FormControl("");
   fullUserList: any[] = [];
+  currentPage: number = 1;
+  pageSize: number = 10;
 
   ngOnInit(): void {
 
     this.getUserData();
-
+   
     /**Search Customer through rxjs operators from backend api*/
 
     /**
@@ -59,7 +61,7 @@ export class RxjsComponent implements OnInit {
 
 
     /**Normal filter from frontend side */
-    
+
     // this.searchValue.valueChanges.pipe(
     //   debounceTime(100),
     //   distinctUntilChanged(),
@@ -81,7 +83,8 @@ export class RxjsComponent implements OnInit {
     this.http.get('https://dummyjson.com/users').subscribe({
       next: (data: any) => {
         this.fullUserList = data.users;
-        this.userList = data.users;
+        this.userList = [... this.fullUserList]
+        // this.updatePaginatedItems();
       },
       error: (err) => {
         console.error('Error occurred:', err);
@@ -106,4 +109,26 @@ export class RxjsComponent implements OnInit {
       : '';
   }
 
+  get totalPages() {
+    return Math.ceil(this.userList.length / this.pageSize);
+  }
+
+  next() {
+    if (this.currentPage < this.totalPages) {
+      this.currentPage++;
+      this.updatePaginatedItems();
+    }
+  }
+
+  prev() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updatePaginatedItems();
+    }
+  }
+
+  updatePaginatedItems() {
+    const start = (this.currentPage - 1) * this.pageSize;
+    this.userList = this.fullUserList.slice(start, start + this.pageSize);
+  }
 }

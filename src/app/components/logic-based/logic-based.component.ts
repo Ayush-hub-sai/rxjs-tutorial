@@ -109,4 +109,40 @@ export class LogicBasedComponent {
 
   }
 
+  Cars = [
+    { id: 1, brand: 'toyota', model: 'Camry', price: 2100 },
+    { id: 5, brand: 'toyota', model: 'Mustang', price: 600 },
+    { id: 2, brand: 'honda', model: 'Civic', price: 2000 },
+    { id: 3, brand: 'ford', model: 'Corolla', price: 7000 },
+    { id: 4, brand: 'honda', model: 'Accord', price: 1500 },
+    { id: 6, brand: 'honda', model: 'Focus', price: 8000 },
+    { id: 6, brand: 'toyota', model: 'Dell', price: 9000 },
+    { id: 6, brand: 'honda', model: 'hero', price: 1500 },
+    { id: 6, brand: 'suzuki', model: 'Zixxer', price: 4500 },
+  ];
+
+  CarsOutput = [
+    { brand: 'toyota', totalValue: 11700 },
+    { brand: 'honda', totalValue: 13000 },
+    { brand: 'ford', totalValue: 7000 },
+    { brand: 'suzuki', totalValue: 4500 },
+  ];
+
+  carsOutpuResult: any[] = [];
+
+  getCarsOutput() {
+    this.carsOutpuResult = []; 
+
+    this.Cars.forEach(car => {
+      const existingBrand = this.carsOutpuResult.find(item => item.brand === car.brand);
+      if (existingBrand) {
+        existingBrand.totalValue += car.price;
+      } else {
+        this.carsOutpuResult.push({ brand: car.brand, totalValue: car.price });
+      }
+    });
+
+    console.log(this.carsOutpuResult);
+  }
+
 }
