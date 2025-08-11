@@ -186,9 +186,11 @@ export class LogicBasedComponent {
 
   calculateResult() {
     try {
-      this.inputNumber = eval(this.inputNumber).toString();
-    } catch (err) {
-      this.inputNumber = 'Error';
+      const safeExpr = this.inputNumber.replace(/[^-()\d/*+.]/g, '');
+      this.inputNumber = Function(`"use strict"; return (${safeExpr})`)().toString();
+    } catch (e) {
+      console.error('Invalid input', e);
+      this.inputNumber = '';
     }
   }
 
