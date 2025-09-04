@@ -52,7 +52,6 @@
     flex-shrink: 0;
 }
 
-
 .container-shrink {
     display: flex;
     overflow-x: auto;
@@ -128,7 +127,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .product-card {
@@ -151,6 +150,17 @@
     font-weight: bold;
 }
 
+.item_name {
+    white-space: nowrap;
+    /* Prevent text wrapping */
+    overflow: hidden;
+    /* Hide overflow text */
+    text-overflow: ellipsis;
+    /* Show "..." at the end */
+    display: block;
+    /* Make sure it respects width */
+}
+
 @media only screen and (max-width: 430px) {
     .product-card {
         width: 138px !important;
@@ -159,6 +169,6 @@
     }
 }
 
-.fw-500{
+.fw-500 {
     font-weight: 500;
 }

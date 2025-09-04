@@ -3,7 +3,7 @@
         <div class="product-card" *ngFor="let item of items">
             <img [src]="item.imageUrl" [alt]="item.name" class="product-img"
                 (error)="item.imageUrl = 'https://coffective.com/wp-content/uploads/2018/06/default-featured-image.png.jpg'" />
-            <span class="fw-500">{{ item.name }}</span>
+            <span class="fw-500 item_name" >{{ item.name }}</span>
             <p>₹{{ item.discountPrice || item.price }}</p>
             <span *ngIf="!item.isAvailable" class="out-of-stock">Out of Stock</span>
             <div *ngIf="item.variants?.length">
