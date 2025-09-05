@@ -1,3 +1,55 @@
+
+.box-design {
+    align-items: center;
+    padding: 34px;
+
+    .box-div {
+        width: 100px;
+        height: 100px;
+        border: 3px solid red;
+        border-radius: 5px;
+        position: relative;
+
+        .main-content {
+            border: 2px solid green;
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            position: absolute;
+            // transition: transform 0.5s ease-in-out;
+        }
+    }
+}
+
+.center {
+    top: 25%;
+    left: 25%;
+    // transform: translate(25px, 25px);
+}
+
+.left {
+    top: 25%;
+    left: 0;
+    // transform: translate(0, 25px);
+}
+
+.top {
+    top: 0;
+    left: 25%;
+    // transform: translate(25px, 0);
+}
+
+.right {
+    right: 0;
+    top: 25%;
+}
+
+.bottom {
+    bottom: 0;
+    left: 25%;
+}
+
+
 //  :vertical-scroll
 .container {
     display: flex;

@@ -16,6 +16,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class SidebarComponent {
   routerList: any[] = [
+    { label: 'Dashboard', route: 'learn-dashboard' },
     { label: 'Rxjs', route: 'rxjs-operator' },
     { label: 'Crud', route: 'crud-operation' },
     { label: 'Renderer', route: 'renderer' },

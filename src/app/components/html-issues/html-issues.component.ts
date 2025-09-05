@@ -12,8 +12,14 @@ import { Component, OnInit } from '@angular/core';
 export class HtmlIssuesComponent implements OnInit{
  
   items: Item[] = MOCK_ECOMMERCE_ITEMS;
-
+  
   ngOnInit(): void {
     
   }
+  
+  position:string='center';
+  move(side:string){
+   this.position=side;
+  }
+
 }
